@@ -3,6 +3,7 @@ package com.higor.React_java.usuario.application.services;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.higor.React_java.middleware.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioRequest;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
 import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
@@ -24,7 +25,7 @@ public class UsuarioService {
     public CriarUsuarioResponse criar(CriarUsuarioRequest request) {
 
          if (usuarioRepository.existsByEmail(request.email())) {                                                                    
-            throw new IllegalArgumentException("E-mail já cadastrado");
+            throw new RegraDeNegocioException("E-mail já cadastrado");
          }
         
         var hashSenha = passwordEncoder.encode(request.senha());
