@@ -14,6 +14,8 @@ import com.higor.React_java.usuario.application.dto.CriarUsuarioRequest;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
 import com.higor.React_java.usuario.application.services.UsuarioService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/Usuario")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -26,7 +28,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/Criar")
-    public ResponseEntity<CriarUsuarioResponse> create(@RequestBody CriarUsuarioRequest request){
+    public ResponseEntity<CriarUsuarioResponse> create(@Valid @RequestBody CriarUsuarioRequest request){
 
         var resultado = usuarioService.criar(request);
 
