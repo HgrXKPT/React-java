@@ -3,8 +3,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
+import com.higor.React_java.middleware.exception.ConflitoDeDadosException;
+import com.higor.React_java.middleware.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.application.dto.LoginRequest;
 import com.higor.React_java.usuario.application.dto.LoginResponse;
+import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
 import com.higor.React_java.usuario.infrastructure.entity.UsuarioEntity;
 import com.higor.React_java.usuario.infrastructure.repository.UsuarioRepository;
 
@@ -20,9 +23,19 @@ public class AuthService {
 
     }
 
-    public LoginResponse Login(LoginRequest request){
+    public LoginResponse login(LoginRequest request){
 
-        return null;
+        
+        var usuario = userRepository.findByEmail(request.email())
+        .orElseThrow(() -> new RegraDeNegocioException("Credenciais inválidas"));
+
+        if(!passwordEncoder.matches(request.senha(), usuario.getSenha())){
+            throw new RegraDeNegocioException("Credenciais inválidas");
+        }
+
+        return UsuarioMapper.toLoginResponse(usuario);
+        
     }
     
 }
+

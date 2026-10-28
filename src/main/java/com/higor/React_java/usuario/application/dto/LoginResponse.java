@@ -1,10 +1,10 @@
 package com.higor.React_java.usuario.application.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import java.util.UUID;
 
 public record LoginResponse(
-    @NotBlank @Email String email,
-    @NotBlank String login
+    UUID id,
+    String email,
+    String login
 ) {
 } 
