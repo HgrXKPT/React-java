@@ -9,3 +9,14 @@ export type CriarUsuarioResponse = {
   email: string;
   login: string;
 };
+
+export type LogarUsuarioRequest = {
+  email: string;
+  senha: string;
+};
+
+export type LogarUsuarioResponse = {
+  id: string;
+  email: string;
+  senha: string;
+};
