@@ -36,19 +36,7 @@ public class Usuario {
         return new Usuario(id, email, senha, login);
     }
 
-    public void atualizar(Email email, String senha, String login){
-        if (email != null) {
-            this.email = email;
-        }
-        
-        if (senha != null && !senha.isBlank()) {
-            this.senha = senha;
-        }
 
-        if (login != null && !login.isBlank()) {
-            this.login = login;
-        }
-    }
 
     public static void validarSenha(String senha){
         if (senha == null || senha.isBlank()) {
