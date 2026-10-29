@@ -18,10 +18,6 @@ public class Usuario {
 
     private String login;
 
-    public Usuario(){
-
-    }
-
     private Usuario(UUID id, Email email, String senha, String login){
         validarEmail(email);
         validarLogin(login);

@@ -1,6 +1,5 @@
 package com.higor.React_java.usuario.api.controllers;
 
-import java.net.URI;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
