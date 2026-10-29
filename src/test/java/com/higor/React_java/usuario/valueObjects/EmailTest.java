@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import com.higor.React_java.middleware.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.valueObjects.Email;
 
 
 
@@ -26,11 +25,12 @@ public class EmailTest {
             // Assert: garante que o getter do record retorna o valor limpo                                                    
             assertEquals("user@exemplo.com", email.email());
         }
-    @Test
-    void deveFalharDadoEmailInvalido(){
+    @ParameterizedTest
+    @ValueSource(strings = {"email-falho", "usuario@", "@exemplo.com"})
+    void deveFalharDadoEmailInvalido(String entrada){
         //Arrange
-        RegraDeNegocioException exception = assertThrows(RegraDeNegocioException.class, 
-            () -> new Email("email-falho")
+        RegraDeNegocioException exception = assertThrows(RegraDeNegocioException.class,
+            () -> new Email(entrada)
         );
 
         //Assert
