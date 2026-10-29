@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.higor.React_java.middleware.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.ValueObjects.Email;
+import com.higor.React_java.usuario.valueObjects.Email;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioRequest;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
 import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
