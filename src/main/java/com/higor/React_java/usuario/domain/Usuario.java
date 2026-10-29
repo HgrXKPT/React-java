@@ -23,6 +23,7 @@ public class Usuario {
     }
 
     private Usuario(UUID id, Email email, String senha, String login){
+        validarEmail(email);
         validarLogin(login);
         validarSenha(senha);
         this.id = id;
@@ -43,6 +44,12 @@ public class Usuario {
             throw new RegraDeNegocioException("Senha é obrigatória e não pode ser vazio.");
         }
     }
+
+    public static void validarEmail(Email email){
+        if(email == null){
+            throw new RegraDeNegocioException("O e-mail é obrigatório.");
+        }
+    }   
 
     public static void validarLogin(String login){
         if (login == null || login.isBlank()) {
