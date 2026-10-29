@@ -25,14 +25,16 @@ public class UsuarioService {
 
     public CriarUsuarioResponse criar(CriarUsuarioRequest request) {
 
-         if (usuarioRepository.existsByEmail(request.email())) {                                                                    
+        Email email = new Email(request.email());
+        
+         if (usuarioRepository.existsByEmail(email.email())) {                                                                    
             throw new RegraDeNegocioException("E-mail já cadastrado");
 
          }
          validarSenha(request.senha());
         
         Usuario usuario = Usuario.criar(
-            new Email(request.email()), 
+            email,
             passwordEncoder.encode(request.senha()), 
             request.login());
         
