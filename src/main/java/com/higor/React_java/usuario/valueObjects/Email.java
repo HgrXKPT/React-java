@@ -1,4 +1,4 @@
-package com.higor.React_java.usuario.ValueObjects;
+package com.higor.React_java.usuario.valueObjects;
 
 import java.util.Locale;
 
