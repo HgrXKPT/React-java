@@ -1,4 +1,4 @@
-package com.higor.React_java.usuario.api.controllers;
+package com.higor.React_java.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.higor.React_java.usuario.application.dto.LoginRequest;
-import com.higor.React_java.usuario.application.dto.LoginResponse;
-import com.higor.React_java.usuario.application.services.AuthService;
+import com.higor.React_java.model.dto.input.LoginRequest;
+import com.higor.React_java.model.dto.output.LoginResponse;
+import com.higor.React_java.service.AuthService;
 
 import jakarta.validation.Valid;
 

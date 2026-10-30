@@ -1,9 +1,9 @@
-package com.higor.React_java.usuario.application.mapper;
+package com.higor.React_java.mapper;
 
-import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
-import com.higor.React_java.usuario.application.dto.LoginResponse;
+import com.higor.React_java.model.dto.output.CriarUsuarioResponse;
+import com.higor.React_java.model.dto.output.LoginResponse;
 import com.higor.React_java.usuario.domain.Usuario;
-import com.higor.React_java.usuario.infrastructure.entity.UsuarioEntity;
+import com.higor.React_java.model.domain.UsuarioEntity;
 
 public class UsuarioMapper {
 

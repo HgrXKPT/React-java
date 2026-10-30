@@ -1,4 +1,4 @@
-package com.higor.React_java.usuario.infrastructure.entity;
+package com.higor.React_java.model.domain;
 
 
 import java.util.UUID;

@@ -2,7 +2,7 @@ package com.higor.React_java.usuario.valueObjects;
 
 import java.util.Locale;
 
-import com.higor.React_java.middleware.exception.RegraDeNegocioException;
+import com.higor.React_java.exception.RegraDeNegocioException;
 
 public record Email(String email) {
  public Email {

@@ -1,4 +1,4 @@
-package com.higor.React_java.usuario.application.dto;
+package com.higor.React_java.model.dto.output;
 
 import java.util.UUID;
 

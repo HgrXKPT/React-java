@@ -1,4 +1,4 @@
-package com.higor.React_java.usuario.infrastructure.repository;
+package com.higor.React_java.repository;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.higor.React_java.usuario.valueObjects.Email;
-import com.higor.React_java.usuario.infrastructure.entity.UsuarioEntity;
+import com.higor.React_java.model.domain.UsuarioEntity;
 
 public interface UsuarioRepository extends  JpaRepository<UsuarioEntity, UUID> {
     

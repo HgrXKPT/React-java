@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import com.higor.React_java.middleware.exception.RegraDeNegocioException;
+import com.higor.React_java.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.valueObjects.Email;
 
 public class UsuarioTest {

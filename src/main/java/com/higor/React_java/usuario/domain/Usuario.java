@@ -2,7 +2,7 @@ package com.higor.React_java.usuario.domain;
 
 import java.util.UUID;
 
-import com.higor.React_java.middleware.exception.RegraDeNegocioException;
+import com.higor.React_java.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.valueObjects.Email;
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.higor.React_java.middleware.exception;                                                                
+package com.higor.React_java.exception;                                                                
                                                                                                                                
     public class ConflitoDeDadosException extends RuntimeException {                                                            
         public ConflitoDeDadosException(String mensagem) {                                                                      

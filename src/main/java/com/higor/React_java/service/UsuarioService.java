@@ -1,16 +1,16 @@
-package com.higor.React_java.usuario.application.services;
+package com.higor.React_java.service;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.higor.React_java.middleware.exception.RegraDeNegocioException;
+import com.higor.React_java.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.valueObjects.Email;
-import com.higor.React_java.usuario.application.dto.CriarUsuarioRequest;
-import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
-import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
+import com.higor.React_java.model.dto.input.CriarUsuarioRequest;
+import com.higor.React_java.model.dto.output.CriarUsuarioResponse;
+import com.higor.React_java.mapper.UsuarioMapper;
 import com.higor.React_java.usuario.domain.Usuario;
-import com.higor.React_java.usuario.infrastructure.repository.UsuarioRepository;
+import com.higor.React_java.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {

@@ -1,15 +1,15 @@
-package com.higor.React_java.usuario.application.services;
+package com.higor.React_java.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
 
-import com.higor.React_java.middleware.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.application.dto.LoginRequest;
-import com.higor.React_java.usuario.application.dto.LoginResponse;
-import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
+import com.higor.React_java.exception.RegraDeNegocioException;
+import com.higor.React_java.model.dto.input.LoginRequest;
+import com.higor.React_java.model.dto.output.LoginResponse;
+import com.higor.React_java.mapper.UsuarioMapper;
 
-import com.higor.React_java.usuario.infrastructure.repository.UsuarioRepository;
+import com.higor.React_java.repository.UsuarioRepository;
 
 @Service 
 public class AuthService {
