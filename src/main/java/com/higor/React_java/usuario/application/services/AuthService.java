@@ -3,12 +3,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
-import com.higor.React_java.middleware.exception.ConflitoDeDadosException;
+
 import com.higor.React_java.middleware.exception.RegraDeNegocioException;
 import com.higor.React_java.usuario.application.dto.LoginRequest;
 import com.higor.React_java.usuario.application.dto.LoginResponse;
 import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
-import com.higor.React_java.usuario.infrastructure.entity.UsuarioEntity;
+
 import com.higor.React_java.usuario.infrastructure.repository.UsuarioRepository;
 
 @Service 

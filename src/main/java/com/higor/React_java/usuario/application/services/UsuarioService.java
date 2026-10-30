@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.higor.React_java.middleware.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.ValueObjects.Email;
+import com.higor.React_java.usuario.valueObjects.Email;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioRequest;
 import com.higor.React_java.usuario.application.dto.CriarUsuarioResponse;
 import com.higor.React_java.usuario.application.mapper.UsuarioMapper;
@@ -25,14 +25,16 @@ public class UsuarioService {
 
     public CriarUsuarioResponse criar(CriarUsuarioRequest request) {
 
-         if (usuarioRepository.existsByEmail(request.email())) {                                                                    
+        Email email = new Email(request.email());
+        
+         if (usuarioRepository.existsByEmail(email.email())) {                                                                    
             throw new RegraDeNegocioException("E-mail já cadastrado");
 
          }
          validarSenha(request.senha());
         
         Usuario usuario = Usuario.criar(
-            new Email(request.email()), 
+            email,
             passwordEncoder.encode(request.senha()), 
             request.login());
         

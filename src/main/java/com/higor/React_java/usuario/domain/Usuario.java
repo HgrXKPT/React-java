@@ -3,7 +3,7 @@ package com.higor.React_java.usuario.domain;
 import java.util.UUID;
 
 import com.higor.React_java.middleware.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.ValueObjects.Email;
+import com.higor.React_java.usuario.valueObjects.Email;
 
 import lombok.Getter;
 
@@ -18,11 +18,8 @@ public class Usuario {
 
     private String login;
 
-    public Usuario(){
-
-    }
-
     private Usuario(UUID id, Email email, String senha, String login){
+        validarEmail(email);
         validarLogin(login);
         validarSenha(senha);
         this.id = id;
@@ -36,25 +33,19 @@ public class Usuario {
         return new Usuario(id, email, senha, login);
     }
 
-    public void atualizar(Email email, String senha, String login){
-        if (email != null) {
-            this.email = email;
-        }
-        
-        if (senha != null && !senha.isBlank()) {
-            this.senha = senha;
-        }
 
-        if (login != null && !login.isBlank()) {
-            this.login = login;
-        }
-    }
 
     public static void validarSenha(String senha){
         if (senha == null || senha.isBlank()) {
             throw new RegraDeNegocioException("Senha é obrigatória e não pode ser vazio.");
         }
     }
+
+    public static void validarEmail(Email email){
+        if(email == null){
+            throw new RegraDeNegocioException("O e-mail é obrigatório.");
+        }
+    }   
 
     public static void validarLogin(String login){
         if (login == null || login.isBlank()) {
