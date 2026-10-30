@@ -1,6 +1,6 @@
-import { UsuarioApi } from "../api/usuarioApi";
+import { usuarioService } from "@/services/usuario.service";
 import { useForm } from "react-hook-form";
-import type { CriarUsuarioRequest } from "../types";
+import type { CriarUsuarioRequest } from "@/models/usuario";
 import { useNavigate } from "react-router-dom";
 
 export function CreatePage() {
@@ -15,7 +15,7 @@ export function CreatePage() {
 
   async function enviar(dados: CriarUsuarioRequest) {
     try {
-      await UsuarioApi.criar(dados);
+      await usuarioService.criar(dados);
       navigate("/login");
     } catch (error: unknown) {
       setError("root", {

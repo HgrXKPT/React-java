@@ -1,9 +1,9 @@
 import { createContext } from "react";
-import type { LogarUsuarioResponse } from "../types";
+import type { Usuario } from "@/models/usuario";
 
 export type AuthContextValue = {
-  usuario: LogarUsuarioResponse | null;
-  entrar: (usuario: LogarUsuarioResponse) => void;
+  usuario: Usuario | null;
+  entrar: (usuario: Usuario) => void;
   sair: () => void;
 };
 

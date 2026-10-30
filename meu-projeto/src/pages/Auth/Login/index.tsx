@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import type { LogarUsuarioRequest } from "../types";
-import { authApi } from "../api/authApi";
-import { useAuth } from "../context/useAuth";
+import type { LogarUsuarioRequest } from "@/models/usuario";
+import { authService } from "@/services/auth.service";
+import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
@@ -12,7 +12,7 @@ export function LoginPage() {
 
   async function enviar(dados: LogarUsuarioRequest) {
     try {
-      const result = await authApi.logar(dados);
+      const result = await authService.logar(dados);
       entrar(result);
       navigate("/");
     } catch (error: unknown) {

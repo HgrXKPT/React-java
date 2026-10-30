@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
-import { useAuth } from "../../features/auth/context/useAuth";
+import { useAuth } from "@/hooks/use-auth";
 
 export function AppLayout() {
   const { usuario } = useAuth();

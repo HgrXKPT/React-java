@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { CreatePage } from "../features/auth/pages/RegisterPage";
-import { LoginPage } from "../features/auth/pages/LoginPage";
-import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
-import { AppLayout } from "../components/layout/AppLayout";
-import { AuthLayout } from "../features/auth/components/AuthLayout";
+import { CreatePage } from "@/pages/Auth/Cadastro";
+import { LoginPage } from "@/pages/Auth/Login";
+import { DashboardPage } from "@/pages/Dashboard";
+import { AppLayout } from "@/components/layout/AppLayout";
+import { AuthLayout } from "@/components/layout/AuthLayout";
 
 export const router = createBrowserRouter([
   {
