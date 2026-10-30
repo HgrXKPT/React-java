@@ -18,5 +18,5 @@ export type LogarUsuarioRequest = {
 export type LogarUsuarioResponse = {
   id: string;
   email: string;
-  senha: string;
+  login: string;
 };
