@@ -1,15 +1,15 @@
 package com.higor.React_java.service;
 
+import java.util.Locale;
+import java.util.UUID;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.higor.React_java.exception.RegraDeNegocioException;
-import com.higor.React_java.usuario.valueObjects.Email;
-import com.higor.React_java.model.dto.input.CriarUsuarioRequest;
-import com.higor.React_java.model.dto.output.CriarUsuarioResponse;
-import com.higor.React_java.mapper.UsuarioMapper;
-import com.higor.React_java.usuario.domain.Usuario;
+import com.higor.React_java.model.domain.Usuario;
+import com.higor.React_java.model.dto.input.UsuarioInputDTO;
 import com.higor.React_java.repository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,31 +21,46 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public CriarUsuarioResponse criar(CriarUsuarioRequest request) {
+    public Usuario criar(UsuarioInputDTO request) {
 
-        Email email = new Email(request.email());
-        
-         if (usuarioRepository.existsByEmail(email.email())) {                                                                    
+        String email = normalizarEmail(request.email());
+
+         if (usuarioRepository.existsByEmail(email)) {
             throw new RegraDeNegocioException("E-mail já cadastrado");
 
          }
          validarSenha(request.senha());
-        
-        Usuario usuario = Usuario.criar(
-            email,
-            passwordEncoder.encode(request.senha()), 
-            request.login());
-        
 
-        var usuarioEntity = UsuarioMapper.toEntity(usuario);
+        Usuario usuario = Usuario.builder()
+            .id(UUID.randomUUID())
+            .email(email)
+            .senha(passwordEncoder.encode(request.senha()))
+            .login(request.login())
+            .build();
+
+
         try{
-            usuarioRepository.save(usuarioEntity);
+            usuarioRepository.save(usuario);
         }catch(DataIntegrityViolationException ex){
             throw ex;
         }
-        
 
-        return UsuarioMapper.toResponse(usuarioEntity);
+
+        return usuario;
+    }
+
+    private static String normalizarEmail(String email){
+        if (email == null || email.isBlank()) {
+            throw new RegraDeNegocioException("O e-mail é obrigatório.");
+        }
+
+        String normalizado = email.trim().toLowerCase(Locale.ROOT);
+
+        if (!normalizado.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+            throw new RegraDeNegocioException("Formato de e-mail inválido.");
+        }
+
+        return normalizado;
     }
 
     private static void validarSenha(String senha){

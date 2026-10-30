@@ -5,12 +5,11 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.higor.React_java.usuario.valueObjects.Email;
-import com.higor.React_java.model.domain.UsuarioEntity;
+import com.higor.React_java.model.domain.Usuario;
 
-public interface UsuarioRepository extends  JpaRepository<UsuarioEntity, UUID> {
-    
-    Optional<UsuarioEntity> findByEmail(String email);
+public interface UsuarioRepository extends  JpaRepository<Usuario, UUID> {
+
+    Optional<Usuario> findByEmail(String email);
 
 	boolean existsByEmail(String email);
 

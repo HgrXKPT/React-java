@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.higor.React_java.model.dto.input.CriarUsuarioRequest;
-import com.higor.React_java.model.dto.output.CriarUsuarioResponse;
+import com.higor.React_java.model.dto.input.UsuarioInputDTO;
+import com.higor.React_java.model.dto.output.UsuarioOutputDTO;
 import com.higor.React_java.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -25,11 +25,11 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping("/Criar")
-    public ResponseEntity<CriarUsuarioResponse> create(@Valid @RequestBody CriarUsuarioRequest request){
+    public ResponseEntity<UsuarioOutputDTO> create(@Valid @RequestBody UsuarioInputDTO request){
 
         var resultado = usuarioService.criar(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioOutputDTO.of(resultado));
         
     }
     

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.higor.React_java.model.dto.input.LoginRequest;
-import com.higor.React_java.model.dto.output.LoginResponse;
+import com.higor.React_java.model.dto.input.LoginInputDTO;
+import com.higor.React_java.model.dto.output.UsuarioOutputDTO;
 import com.higor.React_java.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -25,11 +25,11 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/")
-    public ResponseEntity<LoginResponse> login(@Valid @RequestBody  LoginRequest request){
+    public ResponseEntity<UsuarioOutputDTO> login(@Valid @RequestBody  LoginInputDTO request){
 
         var resultado = authService.login(request);
 
-        return ResponseEntity.status(HttpStatus.OK).body(resultado);
+        return ResponseEntity.status(HttpStatus.OK).body(UsuarioOutputDTO.of(resultado));
 
     }
 }
