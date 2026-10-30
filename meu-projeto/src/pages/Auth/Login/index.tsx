@@ -1,31 +1,12 @@
-import { useForm } from "react-hook-form";
-import type { LogarUsuarioRequest } from "@/models/usuario";
-import { authService } from "@/services/auth.service";
-import { useAuth } from "@/hooks/use-auth";
-import { useNavigate } from "react-router-dom";
+import { useLoginPage } from "./hooks/use-login-page";
 
 export function LoginPage() {
-  const { entrar } = useAuth();
-  const navigate = useNavigate();
-
-  const { register, handleSubmit, setError } = useForm<LogarUsuarioRequest>();
-
-  async function enviar(dados: LogarUsuarioRequest) {
-    try {
-      const result = await authService.logar(dados);
-      entrar(result);
-      navigate("/");
-    } catch (error: unknown) {
-      setError("root", {
-        message: error instanceof Error ? error.message : "Erro inesperado.",
-      });
-    }
-  }
+  const { register, onSubmit } = useLoginPage();
 
   return (
     <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
       <form
-        onSubmit={handleSubmit(enviar)}
+        onSubmit={onSubmit}
         noValidate
         action=""
         className="flex flex-col gap-4"

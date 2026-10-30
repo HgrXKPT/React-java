@@ -1,33 +1,12 @@
-import { usuarioService } from "@/services/usuario.service";
-import { useForm } from "react-hook-form";
-import type { CriarUsuarioRequest } from "@/models/usuario";
-import { useNavigate } from "react-router-dom";
+import { useCadastroPage } from "./hooks/use-cadastro-page";
 
 export function CreatePage() {
-  const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm<CriarUsuarioRequest>();
-
-  async function enviar(dados: CriarUsuarioRequest) {
-    try {
-      await usuarioService.criar(dados);
-      navigate("/login");
-    } catch (error: unknown) {
-      setError("root", {
-        message: error instanceof Error ? error.message : "Erro inesperado.",
-      });
-    }
-  }
+  const { register, errors, onSubmit } = useCadastroPage();
 
   return (
     <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
       <form
-        onSubmit={handleSubmit(enviar)}
+        onSubmit={onSubmit}
         noValidate
         className="flex flex-col gap-4"
       >
