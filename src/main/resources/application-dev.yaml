@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/meubanco
+  jpa:
+    # Exibe e formata as queries SQL no console de desenvolvimento
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

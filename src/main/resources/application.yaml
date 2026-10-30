@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: React-java
+  profiles:
+    default: dev
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      # Valida o schema contra as entidades sem alterar tabelas em runtime (gerenciamento via Flyway)
+      ddl-auto: validate
