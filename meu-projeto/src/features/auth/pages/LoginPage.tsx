@@ -1,13 +1,20 @@
 import { useForm } from "react-hook-form";
 import type { LogarUsuarioRequest } from "../types";
 import { authApi } from "../api/authApi";
+import { useAuth } from "../context/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
+  const { entrar } = useAuth();
+  const navigate = useNavigate();
+
   const { register, handleSubmit, setError } = useForm<LogarUsuarioRequest>();
 
   async function enviar(dados: LogarUsuarioRequest) {
     try {
-      await authApi.logar(dados);
+      const result = await authApi.logar(dados);
+      entrar(result);
+      navigate("/");
     } catch (error: unknown) {
       setError("root", {
         message: error instanceof Error ? error.message : "Erro inesperado.",
