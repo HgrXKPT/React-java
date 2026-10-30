@@ -11,17 +11,14 @@ import com.higor.React_java.mapper.UsuarioMapper;
 
 import com.higor.React_java.repository.UsuarioRepository;
 
-@Service 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class AuthService {
 
     private final UsuarioRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
-
-    public AuthService(UsuarioRepository userRepository, PasswordEncoder passwordEncoder ){
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-
-    }
 
     public LoginResponse login(LoginRequest request){
 

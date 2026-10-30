@@ -12,16 +12,14 @@ import com.higor.React_java.mapper.UsuarioMapper;
 import com.higor.React_java.usuario.domain.Usuario;
 import com.higor.React_java.repository.UsuarioRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
-
-    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
-        this.usuarioRepository = usuarioRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public CriarUsuarioResponse criar(CriarUsuarioRequest request) {
 

@@ -13,18 +13,16 @@ import com.higor.React_java.model.dto.output.LoginResponse;
 import com.higor.React_java.service.AuthService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/Login")
 @CrossOrigin(origins = "http://localhost:5173")
+@RequiredArgsConstructor
 public class AuthController {
-    
+
 
     private final AuthService authService;
-
-    public AuthController(AuthService authService){
-        this.authService = authService;
-    }
 
     @PostMapping("/")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody  LoginRequest request){
