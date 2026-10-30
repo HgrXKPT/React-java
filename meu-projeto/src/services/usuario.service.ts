@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import type {
   CriarUsuarioRequest,
   Usuario,
@@ -14,7 +15,7 @@ export function toUsuario(dto: UsuarioOutputDTO): Usuario {
 }
 
 class UsuarioService {
-  baseUrl = "http://localhost:8080/Usuario";
+  baseUrl = `${env.apiBaseUrl}/Usuario`;
 
   async criar(dados: CriarUsuarioRequest): Promise<Usuario> {
     const response = await fetch(`${this.baseUrl}/Criar`, {

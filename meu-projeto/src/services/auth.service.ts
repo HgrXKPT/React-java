@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import type {
   LogarUsuarioRequest,
   Usuario,
@@ -6,7 +7,7 @@ import type {
 import { toUsuario } from "./usuario.service";
 
 class AuthService {
-  baseUrl = "http://localhost:8080/Login";
+  baseUrl = `${env.apiBaseUrl}/Login`;
 
   async logar(dados: LogarUsuarioRequest): Promise<Usuario> {
     const response = await fetch(`${this.baseUrl}/`, {
