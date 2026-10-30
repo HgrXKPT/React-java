@@ -15,14 +15,14 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/Login")
+@RequestMapping("auth")
 @RequiredArgsConstructor
 public class AuthController {
 
 
     private final AuthService authService;
 
-    @PostMapping("/")
+    @PostMapping("login")
     public ResponseEntity<UsuarioOutputDTO> login(@Valid @RequestBody  LoginInputDTO request){
 
         var resultado = authService.login(request);

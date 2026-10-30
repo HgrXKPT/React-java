@@ -7,10 +7,10 @@ import type {
 import { toUsuario } from "./usuario.service";
 
 class AuthService {
-  baseUrl = `${env.apiBaseUrl}/Login`;
+  baseUrl = `${env.apiBaseUrl}/auth`;
 
   async logar(dados: LogarUsuarioRequest): Promise<Usuario> {
-    const response = await fetch(`${this.baseUrl}/`, {
+    const response = await fetch(`${this.baseUrl}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),

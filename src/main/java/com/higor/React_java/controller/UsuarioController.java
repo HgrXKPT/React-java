@@ -16,13 +16,13 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/Usuario")
+@RequestMapping("usuarios")
 @RequiredArgsConstructor
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    @PostMapping("/Criar")
+    @PostMapping
     public ResponseEntity<UsuarioOutputDTO> create(@Valid @RequestBody UsuarioInputDTO request){
 
         var resultado = usuarioService.criar(request);

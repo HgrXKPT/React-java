@@ -15,10 +15,10 @@ export function toUsuario(dto: UsuarioOutputDTO): Usuario {
 }
 
 class UsuarioService {
-  baseUrl = `${env.apiBaseUrl}/Usuario`;
+  baseUrl = `${env.apiBaseUrl}/usuarios`;
 
   async criar(dados: CriarUsuarioRequest): Promise<Usuario> {
-    const response = await fetch(`${this.baseUrl}/Criar`, {
+    const response = await fetch(this.baseUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
