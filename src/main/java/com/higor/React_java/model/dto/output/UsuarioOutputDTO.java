@@ -1,11 +1,9 @@
 package com.higor.React_java.model.dto.output;
 
-import java.util.UUID;
-
 import com.higor.React_java.model.domain.Usuario;
 
 public record UsuarioOutputDTO(
-    UUID id,
+    Long id,
     String email,
     String login
 ) {

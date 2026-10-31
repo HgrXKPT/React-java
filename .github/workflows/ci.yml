@@ -8,19 +8,18 @@ jobs: # O QUE roda
   backend: # nome do job, você escolhe
     runs-on: ubuntu-latest
     services:
-      postgres:
-        image: postgres:18
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
         env:
-          POSTGRES_DB: meubanco
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          ACCEPT_EULA: Y
+          MSSQL_SA_PASSWORD: Senha@Forte123
         ports:
-          - 5432:5432
+          - 1434:1433
         options: >-
-          --health-cmd pg_isready
+          --health-cmd "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Senha@Forte123 -C -Q 'SELECT 1'"
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 10
     steps:
       - name: Baixa o código
         uses: actions/checkout@v7
@@ -31,11 +30,14 @@ jobs: # O QUE roda
           distribution: temurin
           java-version: 21
 
+      - name: Cria o banco
+        run: docker exec ${{ job.services.sqlserver.id }} /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Senha@Forte123 -C -Q "CREATE DATABASE meubanco"
+
       - name: Compila e testa
         run: mvn --batch-mode verify
         env:
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
+          DATABASE_USERNAME: sa
+          DATABASE_PASSWORD: Senha@Forte123
   frontend:
     runs-on: ubuntu-latest
     defaults:

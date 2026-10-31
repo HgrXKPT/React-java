@@ -37,7 +37,6 @@ class UsuarioServiceTest {
 
         var usuario = service.criar(new UsuarioInputDTO("teste123@gmail.com", "teste123", "teste123"));
 
-        assertThat(usuario.getId()).isNotNull();
         assertThat(usuario.getEmail()).isEqualTo("teste123@gmail.com");
         assertThat(usuario.getLogin()).isEqualTo("teste123");
         assertThat(usuario.getSenha()).isEqualTo("hash");

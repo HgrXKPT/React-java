@@ -1,7 +1,6 @@
 package com.higor.React_java.service;
 
 import java.util.Locale;
-import java.util.UUID;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +31,6 @@ public class UsuarioService {
          validarSenha(request.senha());
 
         Usuario usuario = Usuario.builder()
-            .id(UUID.randomUUID())
             .email(email)
             .senha(passwordEncoder.encode(request.senha()))
             .login(request.login())
