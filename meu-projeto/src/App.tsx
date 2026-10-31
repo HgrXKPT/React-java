@@ -1,12 +1,13 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import { router } from "./routes/routes";
+import { router } from "@/routes";
+import { AuthProvider } from "@/contexts/AuthProvider";
 
 function App() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-4 bg-gray-300">
+    <AuthProvider>
       <RouterProvider router={router} />
-    </main>
+    </AuthProvider>
   );
 }
 

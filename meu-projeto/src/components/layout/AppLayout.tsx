@@ -1,0 +1,28 @@
+import { Navigate, Outlet } from "react-router-dom";
+import { Navbar } from "./Navbar";
+import { Sidebar } from "./Sidebar";
+import { useAuth } from "@/hooks/use-auth";
+
+export function AppLayout() {
+  const { usuario } = useAuth();
+
+  if (!usuario) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return (
+    <div className="flex h-screen">
+      <Sidebar />
+      <div className="flex flex-1 flex-col">
+        <Navbar
+          titulo="Dashboard"
+          login={usuario.login}
+          email={usuario.email}
+        />
+        <main className="flex-1 overflow-auto bg-gray-50 p-6">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+}
