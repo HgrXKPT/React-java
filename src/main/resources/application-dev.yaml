@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/meubanco
+    url: jdbc:sqlserver://localhost:1434;databaseName=meubanco;encrypt=true;trustServerCertificate=true
   jpa:
     # Exibe e formata as queries SQL no console de desenvolvimento
     show-sql: true
